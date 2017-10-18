@@ -28,12 +28,30 @@
 
 
 		<h1>Spring Boot + JPA + Twitter Bootstrap</h1>
-		<p>This example is a quick exercise to illustrate how the Spring
-			Boot + MVC , JPA with MySQL using differe type of relationship
-			(ManyToOne, OneToMany) are shown. For Logging Log4j2 is being used.
-			For UI Twitter bootstrap is being used. <br/><br/>Pending work are : 1. All
-			relationships, 2. JUnit and Mockito Testing, 3. REST API for the same
-			and 4. Swagger Documentation for REST API</p>
+		<p>This example is a quick exercise to illustrate how do the
+			following :
+		<ol>
+			<li>Spring Boot</li>
+			<li>Spring MVC</li>
+			<li>JPA with MySQL</li>
+			<li>Relationship (ManyToOne, OneToMany)</li>
+			<li>Log4j2</li>
+			<li>Twitter bootstrap</li>
+			<li>Dpendency - Maven</li>
+			<li>Version Control - Git : https://github.com/vinodvpillai/SpringBoot_JPA_Log4j_CourseTopic</li>
+		</ol>
+		<b>Pending work are :</b>
+		<ol>
+			<li>All relationships (OneToOne and ManyToMany)</li>
+			<li>Hibernate Validation</li>
+			<li>JUnit and Mockito Testing</li>
+			<li>REST API for the same</li>
+			<li>Swagger Documentation for REST API</li>
+			<li>AOP</li>
+			<li>Spring Security</li>
+			<li>i18N</li>
+		</ol>
+		</p>
 		<p>
 			<a class="btn btn-lg btn-primary" href="/courses" role="button">View
 				the Application</a>
