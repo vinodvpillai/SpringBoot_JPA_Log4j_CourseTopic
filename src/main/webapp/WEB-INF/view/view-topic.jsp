@@ -21,27 +21,31 @@
 </head>
 <body>
 	<div class="container">
-	   <!-- Navigation Bar -->
-        <jsp:include page="common/nav.jsp"></jsp:include>
-        
+		<!-- Navigation Bar -->
+		<jsp:include page="common/nav.jsp"></jsp:include>
+
 		<br /> <a type="button" class="btn btn-primary" href="/topics">View
 			Topics</a> <br />
 		<h1>View Topic</h1>
 
 		<form:form action="/topics" method="post" modelAttribute="topic">
-		    <form:hidden path="id"/>
+			<form:hidden path="id" />
 			<div class="form-group">
-				<form:input
-					type="text" class="form-control" 
-					placeholder="Title" path="title" readonly="true"></form:input>
+				<form:input type="text" class="form-control" placeholder="Title"
+					path="title" readonly="true"></form:input>
 			</div>
 			<div class="form-group">
-				<form:input
-                    type="text" class="form-control" 
-                    placeholder="Description" path="description" readonly="true"></form:input>
+				<form:input type="text" class="form-control"
+					placeholder="Description" path="description" readonly="true"></form:input>
+
 			</div>
-			
-			
+			<div class="form-group">
+				<form:input type="text" class="form-control"
+					placeholder="Course" path="course.title" readonly="true"></form:input>
+
+			</div>
+
+
 		</form:form>
 
 	</div>

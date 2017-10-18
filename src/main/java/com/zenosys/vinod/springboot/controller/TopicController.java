@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.zenosys.vinod.springboot.model.CoursesModel;
 import com.zenosys.vinod.springboot.model.TopicModel;
+import com.zenosys.vinod.springboot.service.CourseService;
 import com.zenosys.vinod.springboot.service.TopicService;
 
 /**
@@ -31,6 +33,8 @@ public class TopicController {
 
 	@Autowired
 	private TopicService topicService;
+	@Autowired
+	private CourseService courseService;
 	private static final Logger logger = LogManager
 			.getLogger(TopicController.class);
 
@@ -70,7 +74,13 @@ public class TopicController {
 	@GetMapping("/topics/create")
 	public String addTopic(Model model) {
 		logger.debug("Entered into - addTopic()");
-		model.addAttribute("topic", new TopicModel());
+		List<CoursesModel> courseList=courseService.findAllCourses();
+		logger.debug("Course List found - addTopic() & Size:"+courseList.size());
+		TopicModel topic=new TopicModel();
+		//Loading courses
+		topic.loadCourseFromCourseList(courseList);
+		logger.debug("Added Courses List inside the Topic:"+ topic);
+		model.addAttribute("topic",topic);
 		return "create-topic";
 	}
 
@@ -78,7 +88,9 @@ public class TopicController {
 	public String saveTopic(@ModelAttribute TopicModel topic,
 			RedirectAttributes redirect, Model model) {
 		logger.debug("Entered into - saveTopic()");
-
+		logger.debug("Setting the Course Object base on -saveTopic() Course ID:"+topic.getCourse_id());
+		topic.setCourse(courseService.findCourseById(topic.getCourse_id()));
+		logger.debug("Request for saving object saveTopic() Topic:"+topic);
 		TopicModel topicModel = topicService.addNewTopic(topic);
 		if (topicModel != null) {
 			redirect.addFlashAttribute("successmsg", "Topic added sucessfully");
@@ -96,7 +108,10 @@ public class TopicController {
 		logger.debug("Entered into - editTopic()");
 		TopicModel topic = topicService.findTopicById(id);
 		if (topic != null) {
-			logger.debug("Topic found - editTopic() :" + topic);
+			List<CoursesModel> courseList=courseService.findAllCourses();
+			logger.debug("Course List found - getTopicForEdit() & Size:"+courseList.size());
+			topic.loadCourseFromCourseList(courseList);
+			logger.debug("Added Courses List inside the Topic getTopicForEdit():"+ topic);
 			model.addAttribute("topic", topic);
 			return "edit-topic";
 		}
@@ -109,6 +124,11 @@ public class TopicController {
 	public String updateTopic(@ModelAttribute TopicModel topic,
 			RedirectAttributes redirect, Model model) {
 		logger.debug("Entered into - editTopic()");
+		
+		logger.debug("Setting the Course Object base on -updateTopic() Course ID:"+topic.getCourse_id());
+		topic.setCourse(courseService.findCourseById(topic.getCourse_id()));
+		logger.debug("Request for updating object updateTopic() Topic:"+topic);
+		
 		TopicModel topicModel = topicService.updateTopic(topic);
 		if (topicModel != null) {
 			logger.debug("Topic Successfully Editied - updateTopic() :"

@@ -37,6 +37,7 @@
 					<th>#</th>
 					<th>Title</th>
 					<th>Description</th>
+					<th>Course</th>
 					<th></th>
 					<th></th>
 					<th></th>
@@ -50,6 +51,7 @@
 						<th scope="row">${no}</th>
 						<td>${topic.title }</td>
 						<td>${topic.description }</td>
+						<td>${topic.course.title }</td>
 						<td><a type="button" class="btn btn-info"
 							href="/topics/${topic.id }">View</a></td>
 						<td><a type="button" class="btn btn-success"

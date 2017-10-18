@@ -37,6 +37,12 @@
 				<form:input type="text" class="form-control"
 					placeholder="Description" path="description"></form:input>
 			</div>
+			<div class="form-group">
+                <form:select path="course_id">
+                    
+                    <form:options items="${topic.courselist}"/>
+                </form:select>
+            </div>
 
 			<form:button type="submit" class="btn btn-default">Submit</form:button>
 		</form:form>
