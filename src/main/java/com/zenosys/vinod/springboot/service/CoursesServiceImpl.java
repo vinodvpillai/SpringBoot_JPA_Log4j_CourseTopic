@@ -12,7 +12,7 @@ import com.zenosys.vinod.springboot.model.CoursesModel;
 import com.zenosys.vinod.springboot.repository.CourseRepository;
 
 /**
- * This class represents
+ * This class represents Course Service
  * 
  * @author Vinod Pillai - vinodthebest@gmail.com
  * @version
@@ -26,13 +26,6 @@ public class CoursesServiceImpl implements CourseService {
 	@Autowired
 	CourseRepository courseRepository;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.zenosys.vinod.mvc.service.CourseService#createNewCourse(com.zenosys
-	 * .vinod.mvc.model.CoursesModel)
-	 */
 	@Override
 	public CoursesModel createNewCourse(CoursesModel coursesModel) {
 
@@ -45,13 +38,6 @@ public class CoursesServiceImpl implements CourseService {
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.zenosys.vinod.mvc.service.CourseService#updateCourse(com.zenosys.
-	 * vinod.mvc.model.CoursesModel)
-	 */
 	@Override
 	public CoursesModel updateCourse(CoursesModel coursesModel) {
 		CoursesModel courses = courseRepository.save(coursesModel);
@@ -61,33 +47,18 @@ public class CoursesServiceImpl implements CourseService {
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.zenosys.vinod.mvc.service.CourseService#deleteCourse(int)
-	 */
 	@Override
 	public void deleteCourse(int course_id) {
 
 		courseRepository.delete(course_id);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.zenosys.vinod.mvc.service.CourseService#findCourseById(int)
-	 */
 	@Override
 	public CoursesModel findCourseById(int course_id) {
 
 		return courseRepository.findOne(course_id);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.zenosys.vinod.mvc.service.CourseService#findAllCourses()
-	 */
 	@Override
 	public List<CoursesModel> findAllCourses() {
 		return courseRepository.findAll();

@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 /**
  * This class Course Model All course related properties are defined over here
  * 
@@ -22,15 +21,17 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="courses")
+@Table(name = "courses")
 public class CoursesModel {
 
 	private int id;
 	private String title;
 	private String description;
 	private int fees;
-	
-	private List<TopicModel> topicList=new ArrayList<TopicModel>();
+
+	//private Set<StudentModel> students = new HashSet<StudentModel>();
+
+	private List<TopicModel> topicList = new ArrayList<TopicModel>();
 
 	public CoursesModel() {
 		super();
@@ -52,7 +53,7 @@ public class CoursesModel {
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int getId() {
 		return id;
 	}
@@ -91,7 +92,7 @@ public class CoursesModel {
 				+ description + ", fees=" + fees + "]";
 	}
 
-	@OneToMany(mappedBy="course")
+	@OneToMany(mappedBy = "course")
 	public List<TopicModel> getTopicList() {
 		return topicList;
 	}
@@ -100,6 +101,13 @@ public class CoursesModel {
 		this.topicList = topicList;
 	}
 	
-	
+//	@ManyToMany(mappedBy="courses")
+//	public Set<StudentModel> getStudents() {
+//		return students;
+//	}
+//
+//	public void setStudents(Set<StudentModel> students) {
+//		this.students = students;
+//	}
 
 }
