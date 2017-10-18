@@ -33,6 +33,11 @@ public class CourseController {
 			.getLogger(CourseController.class.getName());
 	@Autowired
 	private CourseService courseService;
+	
+	@GetMapping("/")
+	public String homePage(){
+		return "index";
+	}
 
 	@GetMapping(value = "/courses/{id}")
 	public String getCourse(@PathVariable int id, Model model,
