@@ -40,6 +40,15 @@
 			<div class="form-group">
 				<form:input type="text" class="form-control" placeholder="Fees"
 					path="fees" readonly="true"></form:input>
+
+			</div>
+			Topics:
+			<div class="form-group">
+				<ul>
+					<c:forEach var="topic" items="${courses.topicList}">
+                        <li>${topic.title}</li>
+					</c:forEach>
+				</ul>
 			</div>
 
 		</form:form>

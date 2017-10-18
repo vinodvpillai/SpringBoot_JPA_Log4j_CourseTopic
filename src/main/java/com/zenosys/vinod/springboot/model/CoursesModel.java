@@ -3,10 +3,14 @@
  */
 package com.zenosys.vinod.springboot.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -25,6 +29,8 @@ public class CoursesModel {
 	private String title;
 	private String description;
 	private int fees;
+	
+	private List<TopicModel> topicList=new ArrayList<TopicModel>();
 
 	public CoursesModel() {
 		super();
@@ -84,5 +90,16 @@ public class CoursesModel {
 		return "Courses [id=" + id + ", title=" + title + ", description="
 				+ description + ", fees=" + fees + "]";
 	}
+
+	@OneToMany(mappedBy="course")
+	public List<TopicModel> getTopicList() {
+		return topicList;
+	}
+
+	public void setTopicList(List<TopicModel> topicList) {
+		this.topicList = topicList;
+	}
+	
+	
 
 }
